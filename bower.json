@@ -1,0 +1,27 @@
+{
+  "name": "angular-timespan",
+  "version": "0.0.1",
+  "homepage": "https://github.com/aurbano/angular-timespan",
+  "authors": [
+    "Alejandro U. Alvarez <aluralma@gmail.com>"
+  ],
+  "description": "Simple directive to get human readable timespans from any two dates",
+  "main": "dist/angular-timespan.min.js",
+  "keywords": [
+    "directive",
+    "angular",
+    "timespan",
+    "readable",
+    "dates",
+    "difference",
+    "human"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
