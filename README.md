@@ -24,11 +24,13 @@ angular.module('myApp',[
 Add the directive with the difference between any two dates to get them in a readable manner:
 
 ```html
-Sent <span timespan="{{new Date() - startDate}}"></span> ago.
+Sent <span timespan="dateDiff"></span> ago.
 
 <!-- Generates (for example): -->
 Sent 14 days ago
 ```
+
+Where dateDiff is the difference in milliseconds: `$scope.dateDiff = new Date() - startDate;`
 
 ## Options
 You can specify `timespan-opts` with an object containing the custom settings you want for the timespan display:
