@@ -36,7 +36,7 @@ Where dateDiff is the difference in milliseconds: `$scope.dateDiff = new Date() 
 You can specify `timespan-opts` with an object containing the custom settings you want for the timespan display:
 
 ```html
-Sent <span timespan="{{new Date() - startDate}}" timespan-opts="timespanConfig"></span> ago.
+Sent <span timespan="dateDiff" timespan-opts="timespanConfig"></span> ago.
 ```
 
 And in your controller:
