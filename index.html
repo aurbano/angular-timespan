@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Angular Timespan by aurbano</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Angular Timespan</h1>
+      <h2 class="project-tagline">Simple directive to get human readable timespans from any two dates</h2>
+      <a href="https://github.com/aurbano/angular-timespan" class="btn">View on GitHub</a>
+      <a href="https://github.com/aurbano/angular-timespan/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/aurbano/angular-timespan/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
+
+<div class="highlight highlight-bash"><pre>bower install angular-timespan</pre></div>
+
+<p>Or download the <a href="https://github.com/aurbano/angular-timespan/blob/master/dist/angular-timespan.js">full file</a> or the <a href="https://github.com/aurbano/angular-timespan/blob/master/dist/angular-timespan.min.js">minified version</a> from the <a href="https://github.com/aurbano/angular-timespan/tree/master/dist">dist folder</a>.</p>
+
+<p>Then include the file in your application (adding the script tag, using require... ) and add it to your app:</p>
+
+<div class="highlight highlight-js"><pre>angular.module(<span class="pl-s"><span class="pl-pds">'</span>myApp<span class="pl-pds">'</span></span>,[
+        <span class="pl-s"><span class="pl-pds">'</span>aurbano.timespan<span class="pl-pds">'</span></span>
+        <span class="pl-c">// ...</span>
+].run([
+  <span class="pl-c">/* ... */</span>
+]);</pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Add the directive with the difference between any two dates to get them in a readable manner:</p>
+
+<div class="highlight highlight-html"><pre>Sent &lt;<span class="pl-ent">span</span> <span class="pl-e">timespan</span>=<span class="pl-s"><span class="pl-pds">"</span>dateDiff<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">span</span>&gt; ago.
+
+<span class="pl-c">&lt;!-- Generates (for example): --&gt;</span>
+Sent 14 days ago</pre></div>
+
+<p>Where dateDiff is the difference in milliseconds: <code>$scope.dateDiff = new Date() - startDate;</code></p>
+
+<h2>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h2>
+
+<p>You can specify <code>timespan-opts</code> with an object containing the custom settings you want for the timespan display:</p>
+
+<div class="highlight highlight-html"><pre>Sent &lt;<span class="pl-ent">span</span> <span class="pl-e">timespan</span>=<span class="pl-s"><span class="pl-pds">"</span>dateDiff<span class="pl-pds">"</span></span> <span class="pl-e">timespan-opts</span>=<span class="pl-s"><span class="pl-pds">"</span>timespanConfig<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">span</span>&gt; ago.</pre></div>
+
+<p>And in your controller:</p>
+
+<div class="highlight highlight-js"><pre>$scope.timespanConfig <span class="pl-k">=</span> {
+    lessThanFirst<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>now<span class="pl-pds">'</span></span>,   <span class="pl-c">// What to display if the diff is less than the first available unit</span>
+    millisecond<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>ms<span class="pl-pds">'</span></span>,      <span class="pl-c">// ------------------------------------</span>
+    second<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>s<span class="pl-pds">'</span></span>,            <span class="pl-c">// </span>
+    minute<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>m<span class="pl-pds">'</span></span>,            <span class="pl-c">// </span>
+    hour<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>h<span class="pl-pds">'</span></span>,              <span class="pl-c">// Labels for each unit, use them for</span>
+    day<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>d<span class="pl-pds">'</span></span>,               <span class="pl-c">// shorthand units, localization...</span>
+    week<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>w<span class="pl-pds">'</span></span>,              <span class="pl-c">// Set any to `false` to disable it</span>
+    month<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>mo<span class="pl-pds">'</span></span>,            <span class="pl-c">//</span>
+    year<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>y<span class="pl-pds">'</span></span>,              <span class="pl-c">// ------------------------------------</span>
+    space<span class="pl-k">:</span> <span class="pl-c1">false</span>,           <span class="pl-c">// Whether to add a space between the number and the label</span>
+    pluralize<span class="pl-k">:</span> <span class="pl-c1">false</span>        <span class="pl-c">// Whether to add an 's' to the label if the diff &gt; 1</span>
+};</pre></div>
+
+<h2>
+<a id="contribute" class="anchor" href="#contribute" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contribute</h2>
+
+<p>Feel free to submit any issues or modifications in Pull Requests. If you are adding a feature it would be great if you also documented it in the Readme, or at least in the PR comment.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>This directive is released under the <a href="https://github.com/aurbano/angular-timespan/blob/master/LICENSE">MIT License</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/aurbano/angular-timespan">Angular Timespan</a> is maintained by <a href="https://github.com/aurbano">aurbano</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-3181088-4");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
+
