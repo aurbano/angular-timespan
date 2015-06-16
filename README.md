@@ -65,3 +65,5 @@ This directive is released under the [MIT License](https://github.com/aurbano/an
 
 -------
 *Developed by [Alejandro U. Alvarez](http://urbanoalvarez.es)*
+
+[![Analytics](https://ga-beacon.appspot.com/UA-3181088-16/angular-timespan/readme)](https://github.com/aurbano)
